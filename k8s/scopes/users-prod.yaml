@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-prod
+  labels:
+    app: users
+    scope: prod
+    version: v1
+spec:
+  selector:
+    matchLabels:
+      app: users
+      scope: prod
+  template:
+    metadata:
+      labels:
+        app: users
+        scope: prod
+        version: v1
+    spec:
+      containers:
+        - name: users
+          image: clazz/users-svc:1
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8089
+          env:
+            - name: ITEMS_URL
+              value: http://items/items
+    

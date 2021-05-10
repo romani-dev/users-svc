@@ -1,0 +1,10 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: users
+spec:
+  host: users
+  subsets:
+    - name: prod
+      labels:
+        scope: prod

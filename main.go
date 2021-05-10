@@ -56,9 +56,14 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
+
 		data, err := io.ReadAll(resp.Body)
 		if err != nil {
 			panic(err)
+		}
+
+		if resp.StatusCode != 200 {
+			log.Fatal(string(data))
 		}
 
 		var input Input
