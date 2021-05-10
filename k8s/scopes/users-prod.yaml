@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: users
-          image: clazz/users-svc:1
+          image: clazz/users-svc:2
           resources:
             limits:
               memory: "128Mi"

@@ -63,7 +63,7 @@ func main() {
 		}
 
 		if resp.StatusCode != 200 {
-			log.Fatal(string(data))
+			panic(string(data))
 		}
 
 		var input Input
