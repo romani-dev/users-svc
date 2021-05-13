@@ -8,12 +8,27 @@ spec:
   gateways:
   - "estoque-gateway"
   http:
-  - match:
-    - uri:
-        exact: "/api/users"
-    rewrite:
-      uri: "/users"
-    route:
+
+  # - match:
+  #   - uri:
+  #       exact: "/api/users"
+  #   rewrite:
+  #     uri: "/users"
+  #   route:
+  #   - destination:
+  #         host: users
+  #         subset: prod
+
+  # - match:
+  #   - uri:
+  #       exact: "/headers"
+  #   route:
+  #     - destination:
+  #         host: users
+  #         subset: prod
+  
+  - route:
     - destination:
-          host: users
-          subset: prod
+        host: users
+        subset: prod
+      weight: 100
