@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: users
+spec:
+  hosts:
+  - "estoque.clazz.dev"
+  gateways:
+  - "estoque-gateway"
+  http:
+  - match:
+    - uri:
+        exact: "/api/users"
+    rewrite:
+      uri: "/users"
+    route:
+    - destination:
+          host: users
+          subset: prod

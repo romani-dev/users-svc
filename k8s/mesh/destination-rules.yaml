@@ -4,6 +4,10 @@ metadata:
   name: users
 spec:
   host: users
+  trafficPolicy:
+    tls:
+      mode: DISABLE
+      
   subsets:
     - name: prod
       labels:

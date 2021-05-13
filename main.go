@@ -86,5 +86,9 @@ func main() {
 		c.JSON(200, finalUsers)
 	})
 
+	r.GET("/headers", func(c *gin.Context) {
+		c.JSON(200, c.Request.Header)
+	})
+
 	r.Run(":8089")
 }

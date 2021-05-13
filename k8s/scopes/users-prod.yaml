@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: users-prod
+  annotations:
+    sidecar.istio.io/statsInclusionPrefixes: "cluster.outbound|80||items.core-services.svc.cluster.local"
   labels:
     app: users
     scope: prod
@@ -13,6 +15,8 @@ spec:
       scope: prod
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/statsInclusionPrefixes: "cluster.outbound|80||items.core-services.svc.cluster.local"
       labels:
         app: users
         scope: prod
@@ -20,13 +24,15 @@ spec:
     spec:
       containers:
         - name: users
-          image: clazz/users-svc:2
+          image: clazz/users-svc:3
           resources:
             limits:
               memory: "128Mi"
               cpu: "500m"
           ports:
             - containerPort: 8089
+              protocol: TCP
+              name: http
           env:
             - name: ITEMS_URL
               value: http://items/items
