@@ -7,7 +7,7 @@ metadata:
   labels:
     app: users
     scope: prod
-    version: v4
+    version: v5
 spec:
   selector:
     matchLabels:
@@ -20,11 +20,11 @@ spec:
       labels:
         app: users
         scope: prod
-        version: v4
+        version: v5
     spec:
       containers:
         - name: users
-          image: clazz/users-svc:4
+          image: clazz/users-svc:5
           resources:
             limits:
               memory: "128Mi"

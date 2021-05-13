@@ -64,23 +64,23 @@ func SetTracyHeadersRequest(req *http.Request, c *gin.Context) {
 	req.Header.Set("x-ot-span-context", spanContext)
 }
 
-func SetTracyHeadersResponse(c *gin.Context) {
-	reqID := c.GetHeader("x-request-id")
-	traceID := c.GetHeader("x-b3-traceid")
-	spanID := c.GetHeader("x-b3-spanid")
-	parentSpanID := c.GetHeader("x-b3-parentspanid")
-	sampled := c.GetHeader("x-b3-sampled")
-	flags := c.GetHeader("x-b3-flags")
-	spanContext := c.GetHeader("x-ot-span-context")
+// func SetTracyHeadersResponse(c *gin.Context) {
+// 	reqID := c.GetHeader("x-request-id")
+// 	traceID := c.GetHeader("x-b3-traceid")
+// 	spanID := c.GetHeader("x-b3-spanid")
+// 	parentSpanID := c.GetHeader("x-b3-parentspanid")
+// 	sampled := c.GetHeader("x-b3-sampled")
+// 	flags := c.GetHeader("x-b3-flags")
+// 	spanContext := c.GetHeader("x-ot-span-context")
 
-	c.Header("x-request-id", reqID)
-	c.Header("x-b3-traceid", traceID)
-	c.Header("x-b3-spanid", spanID)
-	c.Header("x-b3-parentspanid", parentSpanID)
-	c.Header("x-b3-sampled", sampled)
-	c.Header("x-b3-flags", flags)
-	c.Header("x-ot-span-context", spanContext)
-}
+// 	c.Header("x-request-id", reqID)
+// 	c.Header("x-b3-traceid", traceID)
+// 	c.Header("x-b3-spanid", spanID)
+// 	c.Header("x-b3-parentspanid", parentSpanID)
+// 	c.Header("x-b3-sampled", sampled)
+// 	c.Header("x-b3-flags", flags)
+// 	c.Header("x-ot-span-context", spanContext)
+// }
 
 func main() {
 
@@ -128,7 +128,7 @@ func main() {
 			finalUsers = append(finalUsers, user)
 		}
 
-		SetTracyHeadersResponse(c)
+		// SetTracyHeadersResponse(c)
 		c.JSON(200, finalUsers)
 	})
 
