@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"time"
 
 	"log"
 
@@ -129,6 +130,7 @@ func main() {
 		}
 
 		// SetTracyHeadersResponse(c)
+		time.Sleep(120 * time.Millisecond)
 		c.JSON(200, finalUsers)
 	})
 
